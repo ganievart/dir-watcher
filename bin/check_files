@@ -1,12 +1,12 @@
 #!/bin/bash
 BASEDIR=$(dirname $0)
 #cur_files_in_dir=$( ls $BASEDIR/../put_files_here/| wc -l )
-kafka_console_producer="/Users/arthur/programming/apache-kafka/kafka_2.11-1.0.1/bin/kafka-console-producer.sh"
+#kafka_console_producer="~/kafka/bin/kafka-console-producer.sh" tilda doesnt work in var
 while (true)
 cur_files_in_dir=$( ls $BASEDIR/../put_files_here/| wc -l )
 do
 if [ $cur_files_in_dir -gt 0 ]; then
- echo "found new files" | $kafka_console_producer --broker-list localhost:9092 --topic test
+ echo "found new files" | ~/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
  mv $BASEDIR/../put_files_here/* $BASEDIR/../to_process
 fi
 done
